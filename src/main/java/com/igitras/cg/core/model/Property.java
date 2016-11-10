@@ -10,6 +10,7 @@ public class Property {
 
     private String name;
     private PropertyType type;
+    private EnumModel enumModel;
     private List<Constrain> constrains = new ArrayList<>();
 
     public String getName() {
@@ -27,6 +28,15 @@ public class Property {
 
     public Property setType(PropertyType type) {
         this.type = type;
+        return this;
+    }
+
+    public EnumModel getEnumModel() {
+        return enumModel;
+    }
+
+    public Property setEnumModel(EnumModel enumModel) {
+        this.enumModel = enumModel;
         return this;
     }
 

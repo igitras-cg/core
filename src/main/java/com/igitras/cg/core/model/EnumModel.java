@@ -6,25 +6,15 @@ import java.util.TreeSet;
 /**
  * Created by mason on 11/7/16.
  */
-public class Enum {
+public class EnumModel extends Model {
 
-    private String name;
     private SortedSet<String> elements = new TreeSet<>();
-
-    public String getName() {
-        return name;
-    }
-
-    public Enum setName(String name) {
-        this.name = name;
-        return this;
-    }
 
     public SortedSet<String> getElements() {
         return elements;
     }
 
-    public Enum setElements(SortedSet<String> elements) {
+    public EnumModel setElements(SortedSet<String> elements) {
         this.elements = elements;
         return this;
     }
@@ -37,15 +27,20 @@ public class Enum {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+        if (!super.equals(o)) {
+            return false;
+        }
 
-        Enum anEnum = (Enum) o;
+        EnumModel enumModel = (EnumModel) o;
 
-        return name != null ? name.equals(anEnum.name) : anEnum.name == null;
+        return elements != null ? elements.equals(enumModel.elements) : enumModel.elements == null;
 
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        int result = super.hashCode();
+        result = 31 * result + (elements != null ? elements.hashCode() : 0);
+        return result;
     }
 }

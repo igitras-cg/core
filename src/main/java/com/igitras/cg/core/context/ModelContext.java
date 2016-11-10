@@ -4,8 +4,12 @@ import com.igitras.cg.core.exception.EnumExistsException;
 import com.igitras.cg.core.exception.EnumInUsingException;
 import com.igitras.cg.core.exception.ModelExistsException;
 import com.igitras.cg.core.exception.ModelInUsingException;
+import com.igitras.cg.core.exception.RelationshipExistsException;
+import com.igitras.cg.core.model.EnumModel;
 import com.igitras.cg.core.model.Model;
 import com.igitras.cg.core.model.Relationship;
+
+import java.util.Set;
 
 /**
  * Created by mason on 11/7/16.
@@ -19,7 +23,7 @@ public interface ModelContext {
      *
      * @throws ModelExistsException
      */
-    void registModel(Model model) throws ModelExistsException;
+    void registerModel(Model model) throws ModelExistsException;
 
     /**
      * Un-Register a model from the context. Only un-using model can be un-register.
@@ -28,7 +32,7 @@ public interface ModelContext {
      *
      * @throws ModelInUsingException
      */
-    void unregistModel(Model model) throws ModelInUsingException;
+    void unregisterModel(Model model) throws ModelInUsingException;
 
     /**
      * Register a enum model to the context. Only non-exists enum model can be register.
@@ -37,7 +41,7 @@ public interface ModelContext {
      *
      * @throws EnumExistsException
      */
-    void registEnum(Enum en) throws EnumExistsException;
+    void registerEnum(EnumModel en) throws EnumExistsException;
 
     /**
      * Un-Register a enum model from the context. Only un-using model can be un-register.
@@ -46,20 +50,41 @@ public interface ModelContext {
      *
      * @throws EnumInUsingException
      */
-    void unregistEnum(Enum en) throws EnumInUsingException;
+    void unregisterEnum(EnumModel en) throws EnumInUsingException;
 
     /**
      * Declaring a relationship between two model objects.
      *
      * @param relationship relationship
      */
-    void makeRelation(Relationship relationship);
+    void registerRelation(Relationship relationship) throws RelationshipExistsException;
 
     /**
      * Un-declaring a relationship between two model objects.
      *
      * @param relationship relationship
      */
-    void removeRelation(Relationship relationship);
+    void unregisterRelation(Relationship relationship);
+
+    /**
+     * Get all the register models
+     *
+     * @return models
+     */
+    Set<Model> getAllModels();
+
+    /**
+     * Get all the register enum models.
+     *
+     * @return enum models.
+     */
+    Set<EnumModel> getAllEnums();
+
+    /**
+     * Get all the register relationships.
+     *
+     * @return relationships.
+     */
+    Set<Relationship> getAllRelationship();
 
 }

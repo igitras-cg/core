@@ -67,12 +67,17 @@ public class Relationship {
 
         Relationship that = (Relationship) o;
 
+        if (from != null ? !from.equals(that.from) : that.from != null) {
+            return false;
+        }
         return fromName != null ? fromName.equals(that.fromName) : that.fromName == null;
 
     }
 
     @Override
     public int hashCode() {
-        return fromName != null ? fromName.hashCode() : 0;
+        int result = from != null ? from.hashCode() : 0;
+        result = 31 * result + (fromName != null ? fromName.hashCode() : 0);
+        return result;
     }
 }
