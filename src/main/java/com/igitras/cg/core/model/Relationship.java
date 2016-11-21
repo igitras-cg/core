@@ -1,5 +1,7 @@
 package com.igitras.cg.core.model;
 
+import com.google.common.base.MoreObjects;
+
 /**
  * Created by mason on 11/7/16.
  */
@@ -79,5 +81,13 @@ public class Relationship {
         int result = from != null ? from.hashCode() : 0;
         result = 31 * result + (fromName != null ? fromName.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("from", from)
+                .add("fromName", fromName)
+                .toString();
     }
 }

@@ -1,5 +1,7 @@
 package com.igitras.cg.core.model;
 
+import com.google.common.base.MoreObjects;
+
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -42,5 +44,12 @@ public class EnumModel extends Model {
         int result = super.hashCode();
         result = 31 * result + (elements != null ? elements.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("elements", elements)
+                .toString();
     }
 }

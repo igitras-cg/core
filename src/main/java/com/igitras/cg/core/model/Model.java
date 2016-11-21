@@ -1,5 +1,7 @@
 package com.igitras.cg.core.model;
 
+import com.google.common.base.MoreObjects;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,5 +50,12 @@ public class Model {
     @Override
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("name", name)
+                .toString();
     }
 }
