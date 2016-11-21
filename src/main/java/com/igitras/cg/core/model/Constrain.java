@@ -1,7 +1,9 @@
 package com.igitras.cg.core.model;
 
 /**
- * Created by mason on 11/7/16.
+ * Constrain model.
+ *
+ * @author mason
  */
 public enum Constrain {
     Required,

@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by mason on 11/17/16.
+ * Model Serializer.
+ *
+ * @author mason
  */
 public class ModelSerializer extends BaseSerializer<Model> {
 

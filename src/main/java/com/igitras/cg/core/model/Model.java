@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by mason on 11/7/16.
+ * Model.
+ *
+ * @author mason
  */
 public class Model {
 

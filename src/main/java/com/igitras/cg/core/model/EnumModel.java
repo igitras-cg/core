@@ -6,7 +6,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Created by mason on 11/7/16.
+ * Enum model.
+ *
+ * @author mason
  */
 public class EnumModel extends Model {
 

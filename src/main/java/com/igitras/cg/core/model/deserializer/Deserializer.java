@@ -1,7 +1,9 @@
 package com.igitras.cg.core.model.deserializer;
 
 /**
- * Created by mason on 11/9/16.
+ * Deserializer from string represented object to Model.
+ *
+ * @author mason
  */
 public interface Deserializer<T> {
 

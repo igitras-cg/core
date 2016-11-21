@@ -1,7 +1,9 @@
 package com.igitras.cg.core.model.serializer;
 
 /**
- * Created by mason on 11/9/16.
+ * Model Serializer, serialize the model to string.
+ *
+ * @author mason
  */
 public interface Serializer<T> {
 

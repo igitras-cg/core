@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by mason on 11/18/16.
+ * Relationship serializer.
+ *
+ * @author mason
  */
 public class RelationshipSerializer extends BaseSerializer<Relationship> {
     @Override

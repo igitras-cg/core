@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mason on 11/7/16.
+ * Property of model.
+ *
+ * @author mason
  */
 public class Property {
 

@@ -3,7 +3,9 @@ package com.igitras.cg.core.model.serializer;
 import static java.lang.String.format;
 
 /**
- * Created by mason on 11/18/16.
+ * Serializer exception. Throwing while serializer the model to string failed.
+ *
+ * @author mason
  */
 public class SerializationException extends RuntimeException {
 

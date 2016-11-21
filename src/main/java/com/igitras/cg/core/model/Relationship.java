@@ -3,7 +3,9 @@ package com.igitras.cg.core.model;
 import com.google.common.base.MoreObjects;
 
 /**
- * Created by mason on 11/7/16.
+ * Relationship between models.
+ *
+ * @author mason
  */
 public class Relationship {
 

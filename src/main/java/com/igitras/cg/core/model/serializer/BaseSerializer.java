@@ -12,7 +12,9 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 /**
- * Created by mason on 11/17/16.
+ * Base Serializer.
+ *
+ * @author mason
  */
 public abstract class BaseSerializer<T> implements Template<T>, Serializer<T> {
 

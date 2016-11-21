@@ -3,7 +3,9 @@ package com.igitras.cg.core.model;
 import java.util.Map;
 
 /**
- * Created by mason on 11/17/16.
+ * Template for serializer.
+ *
+ * @author mason
  */
 public interface Template<T> {
     /**
@@ -13,5 +15,12 @@ public interface Template<T> {
      */
     String getTemplate();
 
+    /**
+     * Build the model context for serialize with template from model.
+     *
+     * @param model model
+     *
+     * @return value map
+     */
     Map<String, Object> buildContext(T model);
 }

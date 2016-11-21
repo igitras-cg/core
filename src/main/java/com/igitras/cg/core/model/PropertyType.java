@@ -1,7 +1,9 @@
 package com.igitras.cg.core.model;
 
 /**
- * Created by mason on 11/7/16.
+ * Property Type.
+ *
+ * @author mason
  */
 public enum PropertyType {
     String,
@@ -12,5 +14,4 @@ public enum PropertyType {
     LocalDate,
     ZoneDateTime,
     Enum
-
 }
