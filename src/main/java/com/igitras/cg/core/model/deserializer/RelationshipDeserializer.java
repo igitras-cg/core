@@ -1,5 +1,7 @@
 package com.igitras.cg.core.model.deserializer;
 
+import com.igitras.cg.core.context.ModelContext;
+import com.igitras.cg.core.exception.RegisterModelException;
 import com.igitras.cg.core.model.Model;
 import com.igitras.cg.core.model.Relationship;
 import com.igitras.cg.core.model.RelationshipType;
@@ -32,5 +34,10 @@ public class RelationshipDeserializer extends BaseDeserializer<Relationship> {
         instance.setFromName(fromPair[1]);
         instance.setTo(new Model().setName(toPair[0]));
         instance.setToName(toPair[1]);
+    }
+
+    @Override
+    public void register(Relationship model, ModelContext context) throws RegisterModelException {
+        context.registerRelation(model);
     }
 }

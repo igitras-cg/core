@@ -88,4 +88,9 @@ public class DefaultModelContext implements ModelContext {
     public Set<Relationship> getAllRelationship() {
         return Collections.unmodifiableSet(relationships);
     }
+
+    @Override
+    public void postProcess() {
+        // TODO: validate and processing
+    }
 }

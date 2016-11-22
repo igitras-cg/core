@@ -2,6 +2,8 @@ package com.igitras.cg.core.model.deserializer;
 
 import static com.igitras.cg.core.model.PropertyType.valueOf;
 
+import com.igitras.cg.core.context.ModelContext;
+import com.igitras.cg.core.exception.RegisterModelException;
 import com.igitras.cg.core.model.Constrain;
 import com.igitras.cg.core.model.EnumModel;
 import com.igitras.cg.core.model.Property;
@@ -42,5 +44,10 @@ public class PropertyDeserializer extends BaseDeserializer<Property> {
     @Override
     protected String normalize(String serialized) {
         return super.normalize(serialized).replaceAll("[\\s]+;[\\s]*", "");
+    }
+
+    @Override
+    public void register(Property model, ModelContext context) throws RegisterModelException {
+
     }
 }

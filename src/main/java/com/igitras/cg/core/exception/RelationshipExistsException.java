@@ -7,7 +7,7 @@ import com.igitras.cg.core.model.Relationship;
 /**
  * Created by mason on 11/9/16.
  */
-public class RelationshipExistsException extends Exception {
+public class RelationshipExistsException extends RegisterModelException {
 
     public RelationshipExistsException(Relationship relationship) {
         super(format("Relationship defined in Model %s with name %s exists", relationship.getFrom().getName(),

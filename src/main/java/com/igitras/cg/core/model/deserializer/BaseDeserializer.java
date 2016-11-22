@@ -1,11 +1,17 @@
 package com.igitras.cg.core.model.deserializer;
 
+import com.igitras.cg.core.context.ModelContext;
+import com.igitras.cg.core.exception.RegisterModelException;
+import com.igitras.cg.core.model.ModelRegister;
+
+import java.rmi.registry.Registry;
+
 /**
  * Base Deserializer that defined the deserialize processing steps.
  *
  * @author mason
  */
-public abstract class BaseDeserializer<T> implements Deserializer<T> {
+public abstract class BaseDeserializer<T> implements Deserializer<T>, ModelRegister<T> {
 
     @Override
     public T deserialize(final String serialized) {
@@ -14,6 +20,11 @@ public abstract class BaseDeserializer<T> implements Deserializer<T> {
         parseTo(normalize, model);
 
         return model;
+    }
+
+    @Override
+    public void deserializeAndRegister(String serialized, ModelContext context) throws RegisterModelException {
+        register(deserialize(serialized), context);
     }
 
     /**

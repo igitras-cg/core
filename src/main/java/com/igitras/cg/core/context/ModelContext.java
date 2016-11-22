@@ -12,9 +12,11 @@ import com.igitras.cg.core.model.Relationship;
 import java.util.Set;
 
 /**
- * Created by mason on 11/7/16.
+ * Model Context.
+ *
+ * @author mason
  */
-public interface ModelContext {
+public interface ModelContext extends PostProcessing {
 
     /**
      * Register a model to the context. Only non-exists model can be register.

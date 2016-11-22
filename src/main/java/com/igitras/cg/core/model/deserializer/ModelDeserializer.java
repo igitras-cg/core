@@ -1,5 +1,7 @@
 package com.igitras.cg.core.model.deserializer;
 
+import com.igitras.cg.core.context.ModelContext;
+import com.igitras.cg.core.exception.RegisterModelException;
 import com.igitras.cg.core.model.Model;
 
 import java.util.stream.Stream;
@@ -28,5 +30,10 @@ public class ModelDeserializer extends BaseDeserializer<Model> {
         Stream.of(splits)
                 .filter(split -> !split.trim().isEmpty())
                 .forEach(split -> instance.getProperties().add(new PropertyDeserializer().deserialize(split)));
+    }
+
+    @Override
+    public void register(Model model, ModelContext context) throws RegisterModelException {
+        context.registerModel(model);
     }
 }
