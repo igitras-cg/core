@@ -1,13 +1,15 @@
 package com.igitras.cg.core.context;
 
+import static com.igitras.cg.core.model.PropertyType.Enum;
+
 import com.igitras.cg.core.exception.EnumExistsException;
 import com.igitras.cg.core.exception.EnumInUsingException;
+import com.igitras.cg.core.exception.MissingModelException;
 import com.igitras.cg.core.exception.ModelExistsException;
 import com.igitras.cg.core.exception.ModelInUsingException;
 import com.igitras.cg.core.exception.RelationshipExistsException;
 import com.igitras.cg.core.model.EnumModel;
 import com.igitras.cg.core.model.Model;
-import com.igitras.cg.core.model.PropertyType;
 import com.igitras.cg.core.model.Relationship;
 
 import java.util.Collections;
@@ -15,7 +17,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by mason on 11/7/16.
+ * Default model context for models storing.
+ *
+ * @author mason
  */
 public class DefaultModelContext implements ModelContext {
 
@@ -54,7 +58,7 @@ public class DefaultModelContext implements ModelContext {
         if (models.stream()
                 .anyMatch(m -> m.getProperties()
                         .stream()
-                        .anyMatch(property -> property.getType() == PropertyType.Enum
+                        .anyMatch(property -> property.getType() == Enum
                                 && property.getEnumModel().equals(en)))) {
             throw new EnumInUsingException();
         }
@@ -91,6 +95,41 @@ public class DefaultModelContext implements ModelContext {
 
     @Override
     public void postProcess() {
-        // TODO: validate and processing
+        // update the relationship models to model in models.
+        this.relationships.stream().forEach(relationship -> {
+            Model from = relationship.getFrom();
+            this.models.stream().filter(model -> model == from).forEach(relationship::setFrom);
+            Model to = relationship.getTo();
+            this.models.stream().filter(model -> model == to).forEach(relationship::setTo);
+        });
+
+        // update the enum of the properties in model to that in enums.
+        this.models.stream().forEach(model -> {
+            model.getProperties().stream().filter(property -> property.getType() == Enum).forEach(property -> {
+                EnumModel enumModel = property.getEnumModel();
+                this.enums.stream().filter(em -> em == enumModel).forEach(property::setEnumModel);
+            });
+        });
+    }
+
+    @Override
+    public void validate() {
+        this.relationships.stream().forEach(relationship -> {
+            if (!this.models.contains(relationship.getFrom())) {
+                throw new MissingModelException(relationship.getFrom().getName());
+            }
+
+            if (!this.models.contains(relationship.getTo())) {
+                throw new MissingModelException(relationship.getTo().getName());
+            }
+        });
+
+        this.models.stream().forEach(model -> {
+            model.getProperties().stream().filter(property -> property.getType() == Enum).forEach(property -> {
+                if (!this.enums.contains(property.getEnumModel())) {
+                    throw new MissingModelException(property.getEnumModel().getName());
+                }
+            });
+        });
     }
 }

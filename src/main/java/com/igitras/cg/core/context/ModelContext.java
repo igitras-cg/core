@@ -16,7 +16,7 @@ import java.util.Set;
  *
  * @author mason
  */
-public interface ModelContext extends PostProcessing {
+public interface ModelContext extends PostProcessing, Validating {
 
     /**
      * Register a model to the context. Only non-exists model can be register.
